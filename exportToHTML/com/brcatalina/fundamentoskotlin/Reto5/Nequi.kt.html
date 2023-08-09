@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>Nequi.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Nequi.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.brcatalina.fundamentoskotlin.Reto5</span>
+
+<span class="s1">import kotlin.random.Random</span>
+<span class="s1">import kotlin.system.exitProcess</span>
+
+
+<span class="s0">class </span><span class="s1">Nequi {</span>
+<span class="s1">}</span>
+
+<span class="s0">fun </span><span class="s1">main() {</span>
+    <span class="s1">println(</span><span class="s2">&quot;Bienvenid@ a nequi&quot;</span><span class="s1">)</span>
+
+    <span class="s0">val </span><span class="s1">nombreUsuario = </span><span class="s2">&quot;Catalina&quot;</span>
+    <span class="s0">val </span><span class="s1">numeroCelular = </span><span class="s3">3012016704L</span>
+    <span class="s0">val </span><span class="s1">clave = </span><span class="s3">2006</span>
+    <span class="s0">var </span><span class="s1">saldoActual = </span><span class="s3">4500.0</span>
+
+    <span class="s1">println(</span><span class="s2">&quot;Ingrese su numero de telefono&quot;</span><span class="s1">)</span>
+    <span class="s0">val </span><span class="s1">celularUsu = readLine()!!.toLong()</span>
+    <span class="s1">println(</span><span class="s2">&quot;Ingrese su clave de 4 digitos&quot;</span><span class="s1">)</span>
+    <span class="s0">val </span><span class="s1">claveUsu = readLine()!!.toInt()</span>
+
+    <span class="s0">if </span><span class="s1">(numeroCelular == celularUsu &amp;&amp; clave == claveUsu) {</span>
+        <span class="s1">println(</span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Acceso concedido</span><span class="s0">\n</span><span class="s2">Bienvenid@ </span><span class="s0">$</span><span class="s1">nombreUsuario</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">)</span>
+        <span class="s1">println(</span><span class="s2">&quot;</span><span class="s0">$</span><span class="s1">nombreUsuario </span><span class="s2">tu saldo actual es: </span><span class="s0">$</span><span class="s1">saldoActual</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">)</span>
+        <span class="s1">println(</span><span class="s2">&quot;Tienes acceso a las siguientes funcionalidades, elige la opcion que quieras&quot;</span><span class="s1">)</span>
+        <span class="s1">println(</span><span class="s2">&quot;1. Sacar dinero</span><span class="s0">\n</span><span class="s2">2. Enviar dinero</span><span class="s0">\n</span><span class="s2">3. Recargar</span><span class="s0">\n</span><span class="s2">4. Salir de nequi&quot;</span><span class="s1">)</span>
+
+        <span class="s0">when </span><span class="s1">(</span><span class="s0">val </span><span class="s1">funcionalidad = readLine()!!.toInt()) {</span>
+            <span class="s3">1 </span><span class="s1">-&gt; {</span>
+                <span class="s1">println(</span><span class="s2">&quot;Sacar dinero:</span><span class="s0">\n</span><span class="s2">Escoge una de estas dos opciones</span><span class="s0">\n</span><span class="s2">1. Cajero</span><span class="s0">\n</span><span class="s2">2. Punto fisico&quot;</span><span class="s1">)</span>
+                <span class="s0">val </span><span class="s1">modalidad = readLine()!!.toInt()</span>
+
+                <span class="s0">if </span><span class="s1">(saldoActual &gt; </span><span class="s3">2000</span><span class="s1">) {</span>
+                    <span class="s1">println(</span><span class="s2">&quot;¿Cuanto dinero desea retirar?&quot;</span><span class="s1">)</span>
+                    <span class="s0">val </span><span class="s1">dinero = readLine()!!.toDouble()</span>
+
+                    <span class="s0">when </span><span class="s1">{</span>
+                        <span class="s1">dinero &gt; saldoActual -&gt; println(</span><span class="s2">&quot;Usted no puede retirar un valor mayor a su &quot; </span><span class="s1">+</span>
+                                <span class="s2">&quot;saldo actual equivalente a </span><span class="s0">$</span><span class="s1">saldoActual</span><span class="s2">&quot;</span><span class="s1">)</span>
+                        <span class="s1">dinero &lt; </span><span class="s3">0 </span><span class="s1">-&gt; println(</span><span class="s2">&quot;Valor no válido&quot;</span><span class="s1">)</span>
+                        <span class="s0">else </span><span class="s1">-&gt; {</span>
+                            <span class="s0">val </span><span class="s1">numeroAleatorio = Random.nextInt(</span><span class="s3">100000</span><span class="s0">, </span><span class="s3">999999</span><span class="s1">)</span>
+                            <span class="s1">println(</span><span class="s2">&quot;Su código para retirar es: </span><span class="s0">$</span><span class="s1">numeroAleatorio</span><span class="s2">&quot;</span><span class="s1">)</span>
+                            <span class="s1">print(</span><span class="s2">&quot;Digite el código:&quot;</span><span class="s1">)</span>
+                            <span class="s0">val </span><span class="s1">numConfirmacion = readLine()!!.toInt()</span>
+
+                            <span class="s0">if </span><span class="s1">(numConfirmacion == numeroAleatorio) {</span>
+                                <span class="s1">saldoActual -= dinero</span>
+                                <span class="s1">println(</span><span class="s2">&quot;Retiro realizado con éxito&quot;</span><span class="s1">)</span>
+                                <span class="s1">println(</span><span class="s2">&quot;Su saldo actual es </span><span class="s0">$</span><span class="s1">saldoActual</span><span class="s2">&quot;</span><span class="s1">)</span>
+                            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                                <span class="s1">println(</span><span class="s2">&quot;El número no coincide, acción no válida&quot;</span><span class="s1">)</span>
+                            <span class="s1">}</span>
+                        <span class="s1">}</span>
+                    <span class="s1">}</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">println(</span><span class="s2">&quot;La transacción no se puede realizar, no te alcanza&quot;</span><span class="s1">)</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+            <span class="s3">2 </span><span class="s1">-&gt; {</span>
+                <span class="s1">println(</span><span class="s2">&quot;Enviar dinero&quot;</span><span class="s1">)</span>
+                <span class="s1">println(</span><span class="s2">&quot;Por favor ingrese el número de teléfono al cual quiere enviar dinero: &quot;</span><span class="s1">)</span>
+                <span class="s0">val </span><span class="s1">numeroEnvio = readLine()!!.toLong()</span>
+                <span class="s1">println(</span><span class="s2">&quot;Digite el valor de dinero que desea enviar: &quot;</span><span class="s1">)</span>
+                <span class="s0">val </span><span class="s1">dinero = readLine()!!.toDouble()</span>
+
+                <span class="s0">if </span><span class="s1">(dinero &lt; saldoActual) {</span>
+                    <span class="s1">saldoActual -= dinero</span>
+                    <span class="s1">println(</span><span class="s2">&quot;El envío de dinero se realizó exitosamente&quot;</span><span class="s1">)</span>
+                    <span class="s1">println(</span><span class="s2">&quot;Su saldo actual es </span><span class="s0">$</span><span class="s1">saldoActual</span><span class="s2">&quot;</span><span class="s1">)</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">println(</span><span class="s2">&quot;El envío del dinero no se puede llevar a cabo&quot;</span><span class="s1">)</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+            <span class="s3">3 </span><span class="s1">-&gt; {</span>
+                <span class="s1">println(</span><span class="s2">&quot;Recargar dinero&quot;</span><span class="s1">)</span>
+                <span class="s1">println(</span><span class="s2">&quot;Por favor ingrese la cantidad de dinero que desea ingresar: &quot;</span><span class="s1">)</span>
+                <span class="s0">val </span><span class="s1">dinero = readLine()!!.toDouble()</span>
+                <span class="s1">println(</span><span class="s2">&quot;¿Usted está seguro de realizar la recarga?</span><span class="s0">\n</span><span class="s2">1. Si</span><span class="s0">\n</span><span class="s2">2. No&quot;</span><span class="s1">)</span>
+                <span class="s0">val </span><span class="s1">decision = readLine()!!.toString().lowercase()</span>
+
+                <span class="s0">when </span><span class="s1">(decision) {</span>
+                    <span class="s2">&quot;si&quot; </span><span class="s1">-&gt; {</span>
+                        <span class="s1">saldoActual += dinero</span>
+                        <span class="s1">println(</span><span class="s2">&quot;Recarga generada exitosamente&quot;</span><span class="s1">)</span>
+                        <span class="s1">println(</span><span class="s2">&quot;Su saldo actual es </span><span class="s0">$</span><span class="s1">saldoActual</span><span class="s2">&quot;</span><span class="s1">)</span>
+                    <span class="s1">}</span>
+                    <span class="s2">&quot;no&quot; </span><span class="s1">-&gt; println(</span><span class="s2">&quot;La recarga se canceló&quot;</span><span class="s1">)</span>
+                    <span class="s0">else </span><span class="s1">-&gt; println(</span><span class="s2">&quot;Opción no válida&quot;</span><span class="s1">)</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+            <span class="s3">4 </span><span class="s1">-&gt; {</span>
+                <span class="s1">println(</span><span class="s2">&quot;Vuelve pronto </span><span class="s0">$</span><span class="s1">nombreUsuario</span><span class="s2">&quot;</span><span class="s1">)</span>
+                <span class="s1">exitProcess(</span><span class="s3">0</span><span class="s1">)</span>
+            <span class="s1">}</span>
+            <span class="s0">else </span><span class="s1">-&gt; println(</span><span class="s2">&quot;Opción no válida&quot;</span><span class="s1">)</span>
+        <span class="s1">}</span>
+    <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+        <span class="s1">println(</span><span class="s2">&quot;Su usuario y contraseña son incorrectos, inténtelo más tarde&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
